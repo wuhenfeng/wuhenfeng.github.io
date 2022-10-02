@@ -8,7 +8,7 @@
       <link href="/2022/10/02/BUCCTF-web/"/>
       <url>/2022/10/02/BUCCTF-web/</url>
       
-        <content type="html"><![CDATA[<hr><hr><h1 id="web-wp"><a href="#web-wp" class="headerlink" title="web wp"></a>web wp</h1><p><img src="/2022/10/02/BUCCTF-web/Blog\Hexo\source_posts\BUCCTF-web\EasySQL.png" alt="EasySQL"></p><p>根据题意，简单的SQL，进入界面，发现是一个简单的登录界面，所以随便输一个用户名：admin，密码用万能的： ‘ or 1&#x3D;1 ,flag就出来了</p>]]></content>
+        <content type="html"><![CDATA[<hr><hr><h1 id="web-wp"><a href="#web-wp" class="headerlink" title="web wp"></a>web wp</h1><blockquote><p><img src="/2022/10/02/BUCCTF-web/EasySQL.png"></p></blockquote><p>根据题意，简单的SQL，进入界面，发现是一个简单的登录界面，所以随便输一个用户名：admin，密码用万能的： ‘ or 1&#x3D;1 ,flag就出来了</p>]]></content>
       
       
       
