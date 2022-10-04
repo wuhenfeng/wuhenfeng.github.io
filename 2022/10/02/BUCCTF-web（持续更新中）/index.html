@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SQL注入, web前端,PHP,SQL注入,一些比赛wp等">
+    <meta name="keywords" content="BUCCTF web, web前端,PHP,SQL注入,一些比赛wp等">
     <meta name="description" content="本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>SQL注入 | web手走的路还要很长</title>
+    <title>BUCCTF web | web手走的路还要很长</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -330,12 +330,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SQL注入</h1>
+                    <h1 class="description center-align post-title">BUCCTF web</h1>
                 </div>
             </div>
         </div>
@@ -463,28 +463,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-10-04
+                    2022-10-02
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-04
+                    2022-10-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    800
+                    52
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -504,28 +504,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="SQL注入总结"><a href="#SQL注入总结" class="headerlink" title="SQL注入总结"></a>SQL注入总结</h1><h3 id="一：-GET-x2F-POST传参注入-：一般情况下有回显"><a href="#一：-GET-x2F-POST传参注入-：一般情况下有回显" class="headerlink" title="一： GET&#x2F;POST传参注入 ：一般情况下有回显"></a>一： GET&#x2F;POST传参注入 ：一般情况下有回显</h3><p>先判断注入类型：?id&#x3D;1 and 1&#x3D;1   看过滤了(,	‘,	“,等等。</p>
-<p>然后判断列的个数： ?id&#x3D;1’ order by x – a         以引号闭合为例子，x代表数字，来判断列数</p>
-<h4 id="2-报错注入"><a href="#2-报错注入" class="headerlink" title="2 报错注入"></a>2 报错注入</h4><p>‘ and updatexml(1,concat(0x7e,(select talbe_schema from informaiton_schema.tables where table_schema&#x3D;’库名’limit 0,1),0x7e)1,) –  a   一般形式的字符类报错注入         0x7e为16进制   的  ~  波浪线符号</p>
-<h4 id="3-布尔盲注"><a href="#3-布尔盲注" class="headerlink" title="3 布尔盲注"></a>3 布尔盲注</h4><p>and length(database())&gt;1</p>
-<h4 id="4-时间盲注"><a href="#4-时间盲注" class="headerlink" title="4 时间盲注"></a>4 时间盲注</h4><h4 id="5-二次注入"><a href="#5-二次注入" class="headerlink" title="5 二次注入"></a>5 二次注入</h4><p>通常看到 PHP MySQL_real_escape_string()函数时，这个函数的作用是用来防止数据库被攻击，可以利用二次注入。</p>
-<p>sqli-labs第25关为例子，admin’#创建这个账号后修改密码，由于单引号闭合后，又加了#，注释了后面的密码，所以修改admin’#的密码相当于直接修改了admin的密码，从而得到flag，实现二次注入</p>
-<h4 id="6-宽字节注入：页面和后台的编码不同而产生的漏洞"><a href="#6-宽字节注入：页面和后台的编码不同而产生的漏洞" class="headerlink" title="6 宽字节注入：页面和后台的编码不同而产生的漏洞"></a>6 宽字节注入：页面和后台的编码不同而产生的漏洞</h4><p>‘单引号被过滤了，用%df’来拼接成汉字即可绕过(适用于GET传参时)</p>
-<p>在POST传参时，用bs修改hex文件来达到目的 		例如sqli-labs 第34关</p>
-<p>当然，一些汉字（例如：汉）为3个字节时，2个字节一组可以与转义符\相匹配代替%df，从而使转义符失效</p>
-<h4 id="7-堆叠注入：可以使用多个SQL语句，多个查询用分号隔开，这就是产生堆叠注入的原因"><a href="#7-堆叠注入：可以使用多个SQL语句，多个查询用分号隔开，这就是产生堆叠注入的原因" class="headerlink" title="7 堆叠注入：可以使用多个SQL语句，多个查询用分号隔开，这就是产生堆叠注入的原因"></a>7 堆叠注入：可以使用多个SQL语句，多个查询用分号隔开，这就是产生堆叠注入的原因</h4><p>原理看到函数：Mysqli_multi_query()函数时，可以想到堆叠注入</p>
-<h3 id="二-：当存在过滤时，存在的过滤方式"><a href="#二-：当存在过滤时，存在的过滤方式" class="headerlink" title="二 ：当存在过滤时，存在的过滤方式"></a>二 ：当存在过滤时，存在的过滤方式</h3><p><strong>1</strong>   如果过滤了 –  a  和#  注释方式不管用  可以在注释原来的地方替换为      or  ‘1’&#x3D;’1   来进行闭合，实行SQL注入</p>
-<p>例如：preg_replace()函数则为过滤用。一般替换（不能用的字符）为空    。在这个函数中加&#x2F;i表示大小写都没法用</p>
-<p><strong>2</strong> 如果过滤了 and 和 or，无法连接代码，可以用&amp;&amp;替换and，||替换or</p>
-<p>注意：&amp;&amp;使用需要用url编码：%26%26。不编码的话当作多参数传参，无法生效。</p>
-<p>sqli-labs第25关为例子  ，最后需要用information的库，但or会被替换为空，爆出来的结果为infmation，无法爆出所需要的表。所以这里可以采用双写绕过，在报错注入语句里写 from infoorrmation_schema  即可。</p>
-<p><strong>3</strong> 过滤\s ：表示不能有空白      空格可以用%0a或者%a0来替换试试，也可以用select 后面多加个括号()来替换</p>
-<p>例如sqli-labs第26关：payload为： ?id&#x3D;1’||(updatexml(1,concat(0x7e,(select(group_concat(table_name))from(infoorrmation_schema.tables)where(table_schema&#x3D;’security’))),1))||’0</p>
-<p><strong>4</strong> 当union和select也被过滤时。先看是不是所有的大小写都被过滤，如果只是单独的，可以用selEct和uniOn来替换。</p>
-<p>注意：查表的时候的单引号用database()函数代替，表名可以用十六进制来替代，因为MySQL支持16进制的表达。</p>
-<h3 id="三-：基于burp-suite修改请求头来进行注入"><a href="#三-：基于burp-suite修改请求头来进行注入" class="headerlink" title="三 ：基于burp suite修改请求头来进行注入"></a>三 ：基于burp suite修改请求头来进行注入</h3><p>1 基于reference</p>
-<p>2 基于cookie</p>
-<p>3 基于X-forward</p>
+                <hr>
+<hr>
+<h1 id="web-wp"><a href="#web-wp" class="headerlink" title="web wp"></a>web wp</h1><blockquote>
+<p><img src="/images/loading.gif" data-original="/2022/10/02/BUCCTF-web%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%EF%BC%89/EasySQL.png"></p>
+</blockquote>
+<p>根据题意，简单的SQL，进入界面，发现是一个简单的登录界面，所以随便输一个用户名：admin，密码用万能的： ‘ or 1&#x3D;1 ,flag就出来了</p>
 
                 
             </div>
@@ -552,7 +536,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://wuhenblog.top/2022/10/04/SQL%E6%B3%A8%E5%85%A5/">https://wuhenblog.top/2022/10/04/SQL%E6%B3%A8%E5%85%A5/</a>
+                    <a href="https://wuhenblog.top/2022/10/02/BUCCTF-web%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%EF%BC%89/">https://wuhenblog.top/2022/10/02/BUCCTF-web%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%EF%BC%89/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -758,7 +742,7 @@
         repo: 'BlogTalk',
         owner: 'wuhenfeng',
         admin: "wuhenfeng",
-        id: '2022-10-04T15-10-48',
+        id: '2022-10-02T09-44-24',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -788,13 +772,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/10/04/Python%E8%AF%AD%E6%B3%95%E9%80%9F%E9%80%9A/">
+                <a href="/2022/10/04/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/images/loading.gif" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="Python语法速通">
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/3.jpg" class="responsive-img" alt="SQL注入">
                         
-                        <span class="card-title">Python语法速通</span>
+                        <span class="card-title">SQL注入</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -822,10 +806,10 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2022/10/02/BUCCTF-web/">
+                <a href="/2022/10/02/BUCCTF-web%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%EF%BC%89/">
                     <div class="card-image">
                         
                         
@@ -852,6 +836,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -1088,7 +1073,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">1.7k</span>&nbsp;字
+                class="white-color">2.2k</span>&nbsp;字
             
             
             
