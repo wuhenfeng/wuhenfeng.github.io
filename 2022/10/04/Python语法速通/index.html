@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="friends, web前端,PHP,SQL注入,一些比赛wp等">
+    <meta name="keywords" content="Python语法速通, web前端,PHP,SQL注入,一些比赛wp等">
     <meta name="description" content="本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>friends | web手走的路还要很长</title>
+    <title>Python语法速通 | web手走的路还要很长</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -326,301 +326,485 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
-    <div class="container">
-    <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                欢迎来到无痕的blog
-                
-            </div>
+    
 
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: ['从来没有真正的绝境, 只有心灵的迷途','Never really desperate, only the lost of the soul'],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Python语法速通</h1>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-</script>
 
 
-    </div>
-</div>
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
 <style>
-    .friends-container {
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
         margin-top: -100px;
-        margin-bottom: 30px;
+        visibility: hidden;
     }
 
-    .friends-container .tag-title {
-        margin-bottom: 10px;
-        color: #3C4858;
-        font-size: 1.75rem;
-        font-weight: 400;
+    #articleContent :focus {
+        outline: none;
     }
 
-    .frind-ship img {
-        border-radius: 50%;
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
     }
 
-    /* 一下是按钮样式 */
-
-    .frind-ship {
-        padding: 10px 20px;
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
     }
 
-    .frind-ship .title {
-        display: flex;
-        align-items: center;
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
     }
 
-    .frind-ship .title div {
-        color: #fff;
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
         padding-left: 10px;
     }
 
-    .frind-ship .title img {
-        width: 100px;
-        height: 100px;
-        flex-shrink: 0;
+    #toc-content ol li {
+        padding-left: 10px;
     }
 
-    .frind-ship .title h1 {
-        padding-bottom: 5px;
-        border-bottom: 2px solid #fff;
-        position: relative;
-        top:-15px;
-        left: 3px;
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
     }
 
-    .friend-button {
-        display: flex;
-        justify-content: center;
-        margin-bottom: -27px;
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
     }
 
-    .friend-button a {
-        border-radius: 40px;
+    #toc-content .is-active-link {
+        color: #42b983;
     }
 
-    .friend-all .tag-post {
-        margin-bottom: 30px;
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
     }
 
-    .button-caution {
-        background-color: #FF4351;
-        border-color: #FF4351;
-        color: #FFF;
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
     }
 
-    .button {
-        font-weight: 300;
-        font-size: 16px;
-        font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-        text-decoration: none;
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-10-04
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-10-04
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    832
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    3 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="python语法"><a href="#python语法" class="headerlink" title="python语法"></a>python语法</h1><hr>
+<ul>
+<li>1 标识符： 只允许出现英文，中文（不推荐，可能会报错），数字(不可以开头)和下划线（_）。</li>
+</ul>
+<p><strong>注意：大小写敏感（区分），不可使用关键字</strong></p>
+<ul>
+<li>转移字符\可以接触引号的效用  例如： “\“黑马程序员\””       三引号用变量接收可以分多行写，不接收就是注释</li>
+<li>字符串拼接： name&#x3D;&#x3D;”黑马程序员”  												%d：占位整数  %f：占位小数</li>
+</ul>
+<p>​							   massage&#x3D;“学IT: %s ” % name     &#x3D; 学IT： 黑马程序员    </p>
+<p><strong>注意：多个变量占位需要在变量前后加括号</strong></p>
+<hr>
+<ul>
+<li>字符串精度控制：   %7.2f   代表7位整数，2位小数     %5d   表示5位整数</li>
+<li>字符串快速格式化：print（f“名称：{变量}，”）   f： format格式</li>
+</ul>
+<p>注意：不理会类型，不做精度控制（适合对精度无要求的使用）</p>
+<hr>
+<ul>
+<li><strong>注意：无论输入什么，input（）的数据类型都是字符串型</strong></li>
+</ul>
+<hr>
+<ul>
+<li><p>if elif else 注意点： if elif 可以用多个，elif必须带条件，判断是互斥且有序的。 else不用带条件。</p>
+</li>
+<li><p>输出不换行  print（“hello”，end&#x3D;‘’） print （“world”，end&#x3D;‘’）即输出在同一行          print（）为换行</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>for循环：无法定义循环条件      <strong>{for  临时变量   in   被处理的数据}</strong> 为语法格式   临时变量最好不要在for循坏外部使用</li>
+<li>range语句  语法1：<strong>range （num）从0到num的值</strong>   为1个序列</li>
+<li>语法2：      <strong>range（num1，num2）从1到2的值为1个序列</strong>   </li>
+<li>语法3：      <strong>range（1，2，3）1到2每个按3的方式加  例如5 10 2    序列为{5，7，9}</strong></li>
+</ul>
+<hr>
+<h3 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h3><p>def 函数名(传入参数):                 <strong>参数，返回值可以省略</strong>   省略时，可以返回return None</p>
+<p>​	  函数体										“””  “””三引号可以在有参数的函数里写注释，自动补齐注释格式</p>
+<p>​	  return 返回值											函数内部的变量不加 global 为局部变量</p>
+<hr>
+<h3 id="数据容器-2022-x2F-9-x2F-29"><a href="#数据容器-2022-x2F-9-x2F-29" class="headerlink" title="数据容器        2022&#x2F;9&#x2F;29"></a>数据容器        2022&#x2F;9&#x2F;29</h3><p>分为5类：列表，元组，字符串，集合，字典。         </p>
+<p>append（元素）插入到结尾             insert（位置，“元素”)插入位置的前一位</p>
+<h5 id="元组tuple-内容不可修改，里面嵌套的list列表可以修改-，语法和列表基本一致"><a href="#元组tuple-内容不可修改，里面嵌套的list列表可以修改-，语法和列表基本一致" class="headerlink" title="元组tuple  内容不可修改，里面嵌套的list列表可以修改 ，语法和列表基本一致"></a>元组tuple  内容不可修改，里面嵌套的list列表可以修改 ，语法和列表基本一致</h5><p>字符串 ：内容不可修改  replace可以替代内容形成一个新的字符串返回值</p>
+<p>集合不支持下表索引，不可会用while循环去遍历</p>
+<p><img src="/images/loading.gif" data-original="/2022/10/04/Python%E8%AF%AD%E6%B3%95%E9%80%9F%E9%80%9A/5.png"></p>
+<hr>
+<p>lambda 传入参数：函数体（一行代码）如果不用变量接收，只能每次重写</p>
+<hr>
+<h4 id="文件内容"><a href="#文件内容" class="headerlink" title="文件内容"></a>文件内容</h4><p>read和readlines 两种方法读取文件内容  readline读取一行内容</p>
+<p>对象.read()：表示全部读取  对象.read（num） ：num表示读取多少字节</p>
+<p>对象.close（）：表示关闭文件</p>
+<p>write后需要flush才能有内容，或者直接close有内置flush的功能        （可以创建文件，但也会覆盖内容）</p>
+<p>a模式不会覆盖原文本内容</p>
+<hr>
+<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><p>import time</p>
+<h5 id="request模块库：主要用来发-送-HTTP-请求"><a href="#request模块库：主要用来发-送-HTTP-请求" class="headerlink" title="request模块库：主要用来发 送 HTTP 请求"></a>request模块库：主要用来发 送 HTTP 请求</h5><table>
+<thead>
+<tr>
+<th>delete(<em>url</em>, <em>args</em>)</th>
+<th>发送 DELETE 请求到指定 url</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>get(<em>url</em>, <em>params, args</em>)</td>
+<td>发送 GET 请求到指定 url</td>
+</tr>
+<tr>
+<td>head(<em>url</em>, <em>args</em>)</td>
+<td>发送 HEAD 请求到指定 url</td>
+</tr>
+<tr>
+<td>patch(<em>url</em>, <em>data, args</em>)</td>
+<td>发送 PATCH 请求到指定 url</td>
+</tr>
+<tr>
+<td>post(<em>url</em>, <em>data, json, args</em>)</td>
+<td>发送 POST 请求到指定 url</td>
+</tr>
+<tr>
+<td>put(<em>url</em>, <em>data, args</em>)</td>
+<td>发送 PUT 请求到指定 url</td>
+</tr>
+<tr>
+<td>request(<em>method</em>, <em>url</em>, <em>args</em>)</td>
+<td>向指定的 url 发送指定的请求方法</td>
+</tr>
+</tbody></table>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Wuhen</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://wuhenblog.top/2022/10/04/Python%E8%AF%AD%E6%B3%95%E9%80%9F%E9%80%9A/">https://wuhenblog.top/2022/10/04/Python%E8%AF%AD%E6%B3%95%E9%80%9F%E9%80%9A/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Wuhen</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
         text-align: center;
-        line-height: 40px;
-        height: 40px;
-        padding: 0 40px;
-        margin: 0;
-        display: inline-block;
-        appearance: none;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
         cursor: pointer;
-        border: none;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        -webkit-transition-property: all;
-        transition-property: all;
-        -webkit-transition-duration: .3s;
-        transition-duration: .3s;
     }
 
-    .title {
-        margin-bottom: 0rem !important;
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
     }
 
-    .card {
-        margin: 3rem 0 1rem 0 !important;
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
     }
 
-    .button-glow.button-caution {
-        -webkit-animation-name: glowing-caution;
-        animation-name: glowing-caution;
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
     }
 
-    @-webkit-keyframes glowing-caution {
-        from {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
-
-        50% {
-            -webkit-box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-            box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-        }
-
-        to {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
+    .reward-content ul {
+        padding-left: 0 !important;
     }
 
-    @keyframes glowing-caution {
-        from {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
-
-        50% {
-            -webkit-box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-            box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-        }
-
-        to {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
     }
 
-    .button-caution:hover {
-        background-color: #ff7680;
-        border-color: #ff7680;
-        color: #FFF;
-        text-decoration: none;
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
     }
 
-    .frind-card1 {
-        background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
     }
 
-    .frind-card2 {
-        background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
     }
 
-    .frind-card3 {
-        background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
     }
 
-    .frind-card4 {
-        background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-    }
-
-    .frind-card5 {
-        background-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
-    }
-
-    .frind-card6 {
-        background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
-    }
-
-    .frind-card7 {
-        background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
-    }
-
-    .frind-card8 {
-        background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
-    }
-
-    .frind-card9 {
-        background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
-    }
-
-    .frind-card10 {
-        background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
-    }
-
-    article .card {
-        overflow: visible !important;
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
     }
 </style>
 
-<main class="content">
-    <div class="container friends-container">
-        <div class="card">
-            <div class="card-content">
-                <div class="tag-title center-align">
-                    <i class="fas fa-address-book"></i>&nbsp;&nbsp;友情链接
-                </div>
-                <article id="friends-link">
-                    
-                    
-                    <div class="row tags-posts friend-all">
-                        
-                        
-                        <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
-                            <div class="card frind-card1">
-                                <div class="frind-ship">
-                                    <div class="title">
-                                        <img src="/images/loading.gif" data-original="https://cn.bing.com/images/search?view=detailV2&ccid=yxzxwU74&id=9386F4C141EE7F7E049D4D7B98D4134362085926&thid=OIP.yxzxwU744CB_K8ckOTsCKwHaKe&mediaurl=https%3a%2f%2fimg.18183.cn%2fuploads%2fallimg%2f210520%2f112-210520110257.jpg&exph=990&expw=700&q=%e5%8e%9f%e7%a5%9e&simid=608029814684459337&FORM=IRPRST&ck=507E8E03A1D5E55C0D445DCDD376206E&selectedIndex=4" alt="img">
-                                        <div>
-                                            <h1 class="friend-name">Blog</h1>
-                                            <p style="position: relative;top: -35px;">陌念hello博客</p>
-                                        </div>
-                                    </div>
-                                    <div class="friend-button">
-                                        <a href="http://monianhello.top/" target="_blank"
-                                            class="button button-glow button-rounded button-caution">
-                                            博客
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/images/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
-                    
-                </article>
+                    <div id="wechat">
+                        <img src="/images/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+</div>
 
-        
-            <div class="card">
-                <div class="card-content">
-                    <h1 id="赞赏名单"><a href="#赞赏名单" class="headerlink" title="赞赏名单"></a>赞赏名单</h1><p>感谢所有赞赏过我的小伙伴啦，你们的支持是我最大的动力！<br><code>panakot</code></p>
-<h1 id="友链交换"><a href="#友链交换" class="headerlink" title="友链交换"></a>友链交换</h1><p>想要交换友链的小伙伴，欢迎在留言板留言，留言格式：</p>
-<ul>
-<li><strong>名称：</strong>你的博客名称</li>
-<li><strong>地址：</strong>你的博客地址</li>
-<li><strong>简介：</strong>一句话简介</li>
-<li><strong>头像：</strong>你的头像地址</li>
-</ul>
-<p>例如我的博客友链，大家可以加到自己博客里哦：</p>
-<ul>
-<li><strong>名称：</strong>Wuhen Web</li>
-<li><strong>地址：</strong><a href="https://wuhenblog.top/">https://wuhenblog.top/</a></li>
-<li><strong>简介：</strong>Web</li>
-</ul>
-
-                </div>
-            </div>
-        
-
-        <div class="card">
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
 
             
-            <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
 <link rel="stylesheet" href="/css/my-gitalk.css">
 
 <div class="card gitalk-card" data-aos="fade-up">
@@ -639,34 +823,267 @@
         repo: 'BlogTalk',
         owner: 'wuhenfeng',
         admin: "wuhenfeng",
-        id: '2022-09-26T23-20-10',
+        id: '2022-10-04T15-11-05',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
     gitalk.render('gitalk-container');
 </script>
 
-            
+    
 
-            
+    
 
-            
+    
 
-            
+    
 
-            
+    
 
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/10/04/Python%E8%AF%AD%E6%B3%95%E9%80%9F%E9%80%9A/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="Python语法速通">
+                        
+                        <span class="card-title">Python语法速通</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Wuhen
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
         </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/10/04/SQL%E6%B3%A8%E5%85%A5/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/3.jpg" class="responsive-img" alt="SQL注入">
+                        
+                        <span class="card-title">SQL注入</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Wuhen
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
     </div>
-</main>
+</article>
+
+</div>
+
 
 <script>
-    $(function () {
-        $('#friends-link').masonry({
-            itemSelector: '.friend-div'
-        });
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: web手走的路还要很长<br />'
+            + '文章作者: Wuhen<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
     });
 </script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
 
 
     <footer class="page-footer bg-color">
