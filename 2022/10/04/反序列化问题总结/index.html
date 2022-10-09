@@ -470,7 +470,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-05
+                    2022-10-06
                 </div>
                 
 
@@ -506,7 +506,7 @@
             <div id="articleContent">
                 <h1 id="PHP反序列化"><a href="#PHP反序列化" class="headerlink" title="PHP反序列化"></a>PHP反序列化</h1><hr>
 <h4 id="1-序列化：将变量（通常是数组和对象）转换为可保存或传输的字符串"><a href="#1-序列化：将变量（通常是数组和对象）转换为可保存或传输的字符串" class="headerlink" title="1 序列化：将变量（通常是数组和对象）转换为可保存或传输的字符串"></a>1 <strong>序列化</strong>：将变量（通常是数组和对象）转换为可保存或传输的字符串</h4><h4 id="2-反序列化：在适当的时候把这个字符串再转化成原来的变量（通常是数组和对象）使用。"><a href="#2-反序列化：在适当的时候把这个字符串再转化成原来的变量（通常是数组和对象）使用。" class="headerlink" title="2 反序列化：在适当的时候把这个字符串再转化成原来的变量（通常是数组和对象）使用。"></a><strong>2 反序列化</strong>：在适当的时候把这个字符串再转化成原来的变量（通常是数组和对象）使用。</h4><p>这两个过程结合起来，可以轻松地存储和传输数据，使程序更具维护性。反序列化本身不是漏洞，但如果反序列化的内容可控，就容易导致漏洞</p>
-<h4 id="3-常用函数"><a href="#3-常用函数" class="headerlink" title="3 常用函数"></a>3 常用函数</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">__construct()  <span class="comment">//当对象创建时触发</span></span><br><span class="line">__destruct()   <span class="comment">//当对象销毁时触发</span></span><br><span class="line">__wakeup()     <span class="comment">//当使用unserialize时触发</span></span><br><span class="line">__sleep()     <span class="comment">//当使用serialize时触发</span></span><br><span class="line">__destruct()  <span class="comment">//当对象被销毁时触发</span></span><br><span class="line">__call()      <span class="comment">//当对象上下文中调用不可访问的方法时触发</span></span><br><span class="line">__get()       <span class="comment">//当访问不可访问或不存在的属性时触发</span></span><br><span class="line">__set()       <span class="comment">//当设置不可访问或不存在属性时触发</span></span><br><span class="line">__toString()  <span class="comment">//当把类当作字符串使用时触发  echo或者拼接字符串或者其他隐式调用该方法的操作都会触发</span></span><br><span class="line">__invoke()    <span class="comment">//当对象调用为函数时触发</span></span><br><span class="line">__callStatic  <span class="comment">//是调用类不存在的静态方式方法时执行</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-常用函数"><a href="#3-常用函数" class="headerlink" title="3 常用函数"></a>3 常用函数</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">__construct()  <span class="comment">//当对象创建时触发</span></span><br><span class="line">__destruct()   <span class="comment">//当对象销毁时触发</span></span><br><span class="line">__wakeup()     <span class="comment">//当使用unserialize时触发</span></span><br><span class="line">__sleep()     <span class="comment">//当使用serialize时触发</span></span><br><span class="line">__destruct()  <span class="comment">//当对象被销毁时触发</span></span><br><span class="line">__call()      <span class="comment">//当对象上下文中调用不可访问的方法时触发</span></span><br><span class="line">__get()       <span class="comment">//当访问不可访问或不存在的属性时触发</span></span><br><span class="line">__set()       <span class="comment">//当设置不可访问或不存在属性时触发</span></span><br><span class="line">__toString()  <span class="comment">//当把类当作字符串使用时触发  echo或者拼接字符串或者其他隐式调用该方法的操作都会触发</span></span><br><span class="line">__invoke()    <span class="comment">//当对象调用为函数时触发</span></span><br><span class="line">__callStatic  <span class="comment">//是调用类不存在的静态方式方法时执行</span></span><br><span class="line">__isset()     <span class="comment">//当对不可访问属性调用isset()或empty()时调用</span></span><br></pre></td></tr></table></figure>
 
 <p>这是一个反序列化结果：  &#x2F;&#x2F;O:4:”Test”:2:{s:4:”test”;s:2:”ok”;s:3:”var”;N;}</p>
 <p>O代表这是一个对象，4代表对象名称的长度，2代表成员个数。 “Test”代表类的名称<br>大括号中分别是：属性名类型、长度、名称;值类型、长度、值。“test”代表属性名称</p>
@@ -546,7 +546,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$res-&gt;name-&gt;var-&gt;obj-&gt;func = new Sec();</span><br></pre></td></tr></table></figure>
 
 <p>直接将文中需要利用的类全部copy下来，<strong>注意！！！</strong>：因为私有类属性无法在类外进行操作，所以我们要把属性全部改成公有属性即 public属性</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Start</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$func</span>;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sec</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$obj</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$var</span>;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Easy</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$cla</span>;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">eeee</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$obj</span>;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$res</span> = <span class="keyword">new</span> <span class="title class_">Start</span>();</span><br><span class="line"><span class="variable">$res</span>-&gt;name = <span class="keyword">new</span> <span class="title class_">Sec</span>();</span><br><span class="line"><span class="variable">$res</span>-&gt;name-&gt;obj = <span class="keyword">new</span> <span class="title class_">Easy</span>();</span><br><span class="line"><span class="variable">$res</span>-&gt;name-&gt;<span class="keyword">var</span> = <span class="keyword">new</span> <span class="title function_ invoke__">eeee</span>(); </span><br><span class="line"><span class="variable">$res</span>-&gt;name-&gt;<span class="keyword">var</span>-&gt;obj = <span class="keyword">new</span> <span class="title class_">Start</span>();</span><br><span class="line"><span class="variable">$res</span>-&gt;name-&gt;<span class="keyword">var</span>-&gt;obj-&gt;func = <span class="keyword">new</span> <span class="title class_">Sec</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="variable">$res</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Start&#123;</span><br><span class="line">    public $name;</span><br><span class="line">    public $func;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">class Sec&#123;</span><br><span class="line">    public $obj;</span><br><span class="line">    public $var;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">class Easy&#123;</span><br><span class="line">    public $cla;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">class eeee&#123;</span><br><span class="line">    public $obj;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line">$res = new Start();</span><br><span class="line">$res-&gt;name = new Sec();</span><br><span class="line">$res-&gt;name-&gt;obj = new Easy();</span><br><span class="line">$res-&gt;name-&gt;var = new eeee(); </span><br><span class="line">$res-&gt;name-&gt;var-&gt;obj = new Start();</span><br><span class="line">$res-&gt;name-&gt;var-&gt;obj-&gt;func = new Sec();</span><br><span class="line">echo serialize($res);</span><br></pre></td></tr></table></figure>
 
 <p>得到payload为：</p>
 <p>  O:5:”Start”:2:{s:4:”name”;O:3:”Sec”:2:{s:3:”obj”;O:4:”Easy”:1:{s:3:”cla”;N;}s:3:”var”;O:4:”eeee”:1:{s:3:”obj”;O:5:”Start”:2:  {s:4:”name”;N;s:4:”func”;O:3:”Sec”:2:{s:3:”obj”;N;s:3:”var”;N;}}}}s:4:”func”;N;} </p>
@@ -810,18 +810,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/10/04/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
+                <a href="/2022/10/09/10%E6%9C%88%E6%A0%A1%E8%B5%9Bwp/">
                     <div class="card-image">
                         
                         
-                        <img src="/images/loading.gif" data-original="/medias/featureimages/3.jpg" class="responsive-img" alt="反序列化问题总结">
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/12.jpg" class="responsive-img" alt="10月校赛wp">
                         
-                        <span class="card-title">反序列化问题总结</span>
+                        <span class="card-title">10月校赛wp</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -831,9 +830,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-04
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -842,7 +841,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -1116,7 +1114,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">3.1k</span>&nbsp;字
+                class="white-color">4.7k</span>&nbsp;字
             
             
             
