@@ -503,7 +503,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    859
+                    979
                 </div>
                 
 
@@ -550,7 +550,8 @@
 
 <h3 id="南京殇2"><a href="#南京殇2" class="headerlink" title="南京殇2"></a>南京殇2</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">世上的事都是人堆砌起来的，又被人纷纷撇扬了去，漫不经心...浑不知这是历史。</span><br><span class="line">我行走在现在，又行走在历史，分分钟编程人人揣测的虚影子。</span><br><span class="line">笔记最后她写道 想知道我的真心么</span><br><span class="line">&lt;?php </span><br><span class="line">include(&#x27;2.php&#x27;);</span><br><span class="line">echo &#x27;&lt;br /&gt; &#x27;;</span><br><span class="line">$x=$_GET[&quot;X&quot;];</span><br><span class="line">$y=$_POST[&quot;Y&quot;];</span><br><span class="line">if(preg_match(&quot;/[a-d]|[f-z]/im&quot;,$x))</span><br><span class="line">&#123;</span><br><span class="line">    die(&#x27; 她已将真心封藏，到底多少热情的碰撞才能唤醒这份... &#x27;);</span><br><span class="line">&#125;</span><br><span class="line">if(preg_match(&quot;/curl|wget|nc/im&quot;,$x))</span><br><span class="line">&#123;</span><br><span class="line">    die(&#x27; no RCE  &#x27;);</span><br><span class="line">&#125;</span><br><span class="line">if (!isset($x)) &#123;</span><br><span class="line">    echo $A ;</span><br><span class="line">    echo &#x27;&lt;br /&gt;&#x27;;</span><br><span class="line">&#125; </span><br><span class="line">else</span><br><span class="line">    if($x==md5($x))</span><br><span class="line">        &#123;</span><br><span class="line">            echo $C;</span><br><span class="line">            echo &#x27;&lt;br /&gt;&#x27;;</span><br><span class="line">           </span><br><span class="line">        	echo $D;</span><br><span class="line">        echo &#x27;&lt;br /&gt;&#x27;;</span><br><span class="line">            if(isset($y))</span><br><span class="line">            &#123;</span><br><span class="line">                 if(preg_match(&quot;/[1-9]|[a-z]/im&quot;,$y))</span><br><span class="line">               &#123;</span><br><span class="line">                    die(&#x27; hack go away &#x27;);</span><br><span class="line">               &#125;</span><br><span class="line">                 else</span><br><span class="line">               &#123;    </span><br><span class="line">                       system(&quot;cat &quot;.$y.&quot;.php&quot;);</span><br><span class="line">               &#125; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else &#123;echo $B;&#125;</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 
-<p>通过代码审计可知，</p>
+<p>通过代码审计可知，x的值&#x3D;&#x3D;MD5后x的值，因为是弱比较，php的特性又是0e后不加数字就截断，所以只要保证x&#x3D;0exxxx，md5（x）&#x3D;0exxxx，即可 0&#x3D;&#x3D;0，绕过！y的值先试试&#x2F;*，看到flag in 1.php！数字1又被过滤了？这…..，然后想到..&#x2F;是当前目录 ..&#x2F;**&#x2F;  又表示列出当前目录所有文件，F12读取源码即可！</p>
+<p><img src="/images/loading.gif" data-original="/2022/10/23/s3c%E6%8B%9B%E6%96%B0%E8%B5%9BWP/wp14.png"></p>
 <h3 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h3><p><img src="/images/loading.gif" data-original="/2022/10/23/s3c%E6%8B%9B%E6%96%B0%E8%B5%9BWP/wp2.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">payload：111=include(&#x27;/flag.txt&#x27;);var_dump(get_defined_vars()); 这是一种命令执行姿势！</span><br><span class="line"></span><br><span class="line">​	111=include(&#x27;/flag.txt&#x27;);   111=include(&#x27;/flag.txt&#x27;);echo $flag;  111=system(&#x27;cat /flag.txt&#x27;);</span><br></pre></td></tr></table></figure>
 
@@ -591,6 +592,8 @@
 <h3 id="EZpython"><a href="#EZpython" class="headerlink" title="EZpython"></a>EZpython</h3><p>让我们 nc 139.224.221.75 34251</p>
 <p><img src="/images/loading.gif" data-original="/2022/10/23/s3c%E6%8B%9B%E6%96%B0%E8%B5%9BWP/wp11.png"></p>
 <p>一眼python命令执行，os模块输出！拿到flag</p>
+<h3 id="解压小游戏"><a href="#解压小游戏" class="headerlink" title="解压小游戏"></a>解压小游戏</h3><p>直接查看far.js里看到源码</p>
+<p><img src="/images/loading.gif" data-original="/2022/10/23/s3c%E6%8B%9B%E6%96%B0%E8%B5%9BWP/wp15.png"></p>
 
                 
             </div>
@@ -1419,7 +1422,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">12.9k</span>&nbsp;字
+                class="white-color">13k</span>&nbsp;字
             
             
             
@@ -1692,7 +1695,7 @@ $(function () {
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
     <script type="text/javascript" src="/js/firework.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true,"react":{"opacity":0.7}}});</script>
+
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -1705,6 +1708,6 @@ $(function () {
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(e){e.imageLazyLoadSetting.processImages=t;var n=e.imageLazyLoadSetting.isSPA,i=e.imageLazyLoadSetting.preloadRatio||1,r=o();function o(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){n&&(r=o());for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(e.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];e=function(){r=r.filter(function(t){return o!==t})},(t=o).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,t.removeAttribute("data-original"),e&&e()},t.src!==i&&(n.src=i))}()}function a(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",a),e.addEventListener("resize",a),e.addEventListener("orientationchange",a)}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(e){e.imageLazyLoadSetting.processImages=t;var n=e.imageLazyLoadSetting.isSPA,i=e.imageLazyLoadSetting.preloadRatio||1,r=o();function o(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){n&&(r=o());for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(e.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];e=function(){r=r.filter(function(t){return o!==t})},(t=o).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,t.removeAttribute("data-original"),e&&e()},t.src!==i&&(n.src=i))}()}function a(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",a),e.addEventListener("resize",a),e.addEventListener("orientationchange",a)}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true,"react":{"opacity":0.7}}});</script></body>
 
 </html>
